@@ -6,6 +6,8 @@ License:	Copyright only
 Group:		Networking/File transfer
 URL:		http://erdgeist.org/arts/software/opentracker/
 Source0:	%{name}-%{version}.tar.bz2
+Source1:	%{name}.init
+Patch0:		opentracker-0.cvs20090825-conf-fix.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -17,21 +19,39 @@ free trackers!.
 
 %prep
 %setup -q
+%patch0 -p1 -b .conf-fix
 
 %build
+#-DWANT_V6
+export FEATURES="-DWANT_SYNC_LIVE -DWANT_ACCESSLIST_WHITE -DWANT_SYNC_SCRAPE -DWANT_COMPRESSION_GZIP -DWANT_RESTRICT_STATS -DWANT_IP_FROM_PROXY"
 %make
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_sysconfdir}
-install -m 644 %{name}.conf.sample %{buildroot}%{_sysconfdir}/%{name}.conf
+
+install -d %{buildroot}%{_bindir} %{buildroot}%{_sysconfdir}/%{name} %buildroot%{_initrddir}
+
 %make PREFIX=%{buildroot}%{_prefix} install
+
+install -D -m 644 %{name}.conf.sample %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
+install -D -m 755 %{SOURCE1} %buildroot%{_initrddir}/%{name}
+
+touch %{buildroot}%{_sysconfdir}/%{name}/whitelist.conf
 
 %clean
 rm -rf %{buildroot}
 
+%post
+%_post_service opentracker
+
+%preun
+%_preun_service opentracker
+
 %files
 %defattr(-,root,root)
 %doc README_v6 README
-%{_sysconfdir}/%{name}.conf
+%dir %{_sysconfdir}/%{name}
+%{_sysconfdir}/%{name}/%{name}.conf
+%{_sysconfdir}/%{name}/whitelist.conf
+%{_initrddir}/%{name}
 %{_bindir}/%{name}
