@@ -10,6 +10,7 @@ Source1:		%{name}.init
 Patch0:			opentracker-0.cvs20090825-conf-fix.patch
 Patch1:			opentracker-0.cvs20090825-daemon-fix.patch
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	zlib-devel
 BuildRequires:	libowfat-devel
 
 %description
