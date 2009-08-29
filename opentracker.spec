@@ -1,15 +1,16 @@
-Summary:	An open and free bittorrent tracker
-Name:		opentracker
-Version:	0.cvs20090825
-Release:	%mkrel 1
-License:	Copyright only
-Group:		Networking/File transfer
-URL:		http://erdgeist.org/arts/software/opentracker/
-Source0:	%{name}-%{version}.tar.bz2
-Source1:	%{name}.init
-Patch0:		opentracker-0.cvs20090825-conf-fix.patch
-Patch1:		opentracker-0.cvs20090825-daemon-fix.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Summary:		An open and free bittorrent tracker
+Name:			opentracker
+Version:		0.cvs20090825
+Release:		%mkrel 1
+License:		Copyright only
+Group:			Networking/File transfer
+URL:			http://erdgeist.org/arts/software/opentracker/
+Source0:		%{name}-%{version}.tar.bz2
+Source1:		%{name}.init
+Patch0:			opentracker-0.cvs20090825-conf-fix.patch
+Patch1:			opentracker-0.cvs20090825-daemon-fix.patch
+BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	libowfat-devel
 
 %description
 opentracker is a open and free bittorrent tracker project. It aims for minimal 
