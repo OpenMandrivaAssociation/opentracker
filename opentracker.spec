@@ -1,7 +1,7 @@
 Summary:		An open and free bittorrent tracker
 Name:			opentracker
 Version:		0.cvs20090825
-Release:		%mkrel 2
+Release:		%mkrel 3
 License:		Copyright only
 Group:			Networking/File transfer
 URL:			http://erdgeist.org/arts/software/opentracker/
