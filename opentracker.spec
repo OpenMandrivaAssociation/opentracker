@@ -8,6 +8,7 @@ URL:		http://erdgeist.org/arts/software/opentracker/
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}.init
 Patch0:		opentracker-0.cvs20090825-conf-fix.patch
+Patch1:		opentracker-0.cvs20090825-daemon-fix.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -20,6 +21,7 @@ free trackers!.
 %prep
 %setup -q
 %patch0 -p1 -b .conf-fix
+%patch1 -p1 -b .daemon-fix
 
 %build
 #-DWANT_V6
