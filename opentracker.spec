@@ -61,24 +61,3 @@ rm -rf %{buildroot}
 %{_initrddir}/%{name}
 %{_bindir}/%{name}
 
-
-%changelog
-* Sat Aug 29 2009 Raphaël Gertz <rapsys@mandriva.org> 0.cvs20090825-3mdv2010.0
-+ Revision: 422324
-- Fix condrestart
-- Fix again initscript for translation
-- Fix init script
-- Update init script
-- Rebuild
-
-* Sat Aug 29 2009 Raphaël Gertz <rapsys@mandriva.org> 0.cvs20090825-1mdv2010.0
-+ Revision: 422211
-- Add zlib buildrequires
-- Add libowfat-devel build requires
-- Add fork feature
-  Fix init script
-  Fix conf
-- First release
-- First partial version (miss initscript)
-- Change package name
-- Created package structure for xbtt.
