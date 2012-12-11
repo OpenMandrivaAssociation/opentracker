@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+    ServerName retracker.local
+    ServerAlias tracker.local
+    RewriteEngine on
+    RewriteRule ^/announce http://127.0.0.1:6969/announce?ip=%{REMOTE_ADDR}&%{QUERY_STRING} [P]
+    RewriteRule ^/announce.php http://127.0.0.1:6969/announce?ip=%{REMOTE_ADDR}&%{QUERY_STRING} [P]
+    RewriteRule ^/scrape http://127.0.0.1:6969/scrape?ip=%{REMOTE_ADDR}&%{QUERY_STRING} [P]
+    CustomLog /dev/null common
+</VirtualHost>

@@ -61,3 +61,39 @@ rm -rf %{buildroot}
 %{_initrddir}/%{name}
 %{_bindir}/%{name}
 
+
+
+%changelog
+* Wed Dec 29 2010 zamir <zamir@mandriva.org> 0.cvs20100808-1mdv2011.0
++ Revision: 626004
+- remove old files
+- update version, remove whitelist and cluster support, add new features
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - the mass rebuild of 2010.0 packages
+
+  + Raphaël Gertz <rapsys@mandriva.org>
+    - Rebuild with fixed init script
+    - Fix condrestart (final)
+    - Revert init script condrestart
+
+* Sat Aug 29 2009 Raphaël Gertz <rapsys@mandriva.org> 0.cvs20090825-3mdv2010.0
++ Revision: 422324
+- Fix condrestart
+- Fix again initscript for translation
+- Fix init script
+- Update init script
+- Rebuild
+
+* Sat Aug 29 2009 Raphaël Gertz <rapsys@mandriva.org> 0.cvs20090825-1mdv2010.0
++ Revision: 422211
+- Add zlib buildrequires
+- Add libowfat-devel build requires
+- Add fork feature
+  Fix init script
+  Fix conf
+- First release
+- First partial version (miss initscript)
+- Change package name
+- Created package structure for xbtt.
+

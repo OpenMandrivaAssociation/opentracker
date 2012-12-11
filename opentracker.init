@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# Startup script for the opentracker daemon (rapsys@free.fr)
+#
+# chkconfig: 345 55 45
+#
+# description: An open and free bittorrent tracker
+#
+### BEGIN INIT INFO
+# Provides: opentracker
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 3 4 5
+# Short-Description: A bittorrent tracker
+# Description: An open and free bittorrent tracker
+### END INIT INFO
+
+. /etc/init.d/functions
+
+case "$1" in
+  start)
+        gprintf "Starting %s daemon: " opentracker
+        daemon /usr/bin/opentracker -f /etc/opentracker/opentracker.conf 1>/dev/null 2>&1 &
+        RETVAL=$?
+        echo
+        [ $RETVAL -eq 0 ] && touch /var/lock/subsys/opentracker
+        ;;
+  stop)
+        gprintf "Shutting down %s daemon: " opentracker
+        killproc opentracker
+        RETVAL=$?
+        echo
+        [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/opentracker
+        ;;
+  status)
+        status opentracker
+        RETVAL=$?
+        ;;
+  reload)
+		gprintf "Reloading %s: " opentracker
+		if [ -f /var/lock/subsys/opentracker ]; then
+			killproc opentracker -HUP
+			RETVAL=$?
+			[ "$RETVAL" = 0 ] && success "config reload" || failure "config reload"
+		else
+			failure "not running so config reload"
+			RETVAL=1
+		fi
+		echo
+        ;;
+  restart)
+        $0 stop
+        $0 start
+        ;;
+  condrestart)
+        [ -f /var/lock/subsys/opentracker ] && $0 restart || :
+        ;;
+  *)
+        gprintf "Usage: %s {start|stop|status|reload|restart}\n" "$0"
+        RETVAL=1
+        ;;
+esac
+
+exit $RETVAL
