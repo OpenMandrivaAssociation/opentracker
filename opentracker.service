@@ -1,0 +1,10 @@
+[Unit]
+Description=An open and free bittorrent tracker
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/opentracker -f /etc/opentracker/opentracker.conf
+
+[Install]
+WantedBy=multi-user.target
