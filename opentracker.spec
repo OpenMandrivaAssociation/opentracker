@@ -6,7 +6,7 @@ Version:	0.cvs20100808
 Release:	5
 License:	Copyright only
 Group:		Networking/File transfer
-Url:		http://erdgeist.org/arts/software/opentracker/
+Url:		https://erdgeist.org/arts/software/opentracker/
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}.service
 Source2:	%{name}.conf.http
